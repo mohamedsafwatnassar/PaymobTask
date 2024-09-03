@@ -19,6 +19,8 @@ Created an application that displays a list of the best movies in 2024. Each mov
 
 - The second feature allows users to view detailed information about a movie by tapping on it. This provides more in-depth details about the movie, and users can also add or remove the movie from their favorites by tapping on the favorite icon.
   
-![9945e077-bf1a-46f1-8374-f9abd68fd719](https://github.com/user-attachments/assets/32d14c6d-e966-49f0-9010-5b6438424870) ![b2ad9632-9e36-43eb-b1f7-cb349c966041](https://github.com/user-attachments/assets/c570c4a8-1c7d-40bb-81d1-fda50cc0e0b4)
+![9945e077-bf1a-46f1-8374-f9abd68fd719](https://github.com/user-attachments/assets/32d14c6d-e966-49f0-9010-5b6438424870)
+
+![b2ad9632-9e36-43eb-b1f7-cb349c966041](https://github.com/user-attachments/assets/c570c4a8-1c7d-40bb-81d1-fda50cc0e0b4)
 
 
