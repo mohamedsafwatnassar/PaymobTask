@@ -3,11 +3,11 @@ Created an application that displays a list of the best movies in 2024. Each mov
 # Libraries and Frameworks
 - Material Design - Design System
 - Navigation component
-* Retrofit - HTTP Client
-+ Kotlin Serialization - Kotlin Multiplatform Serialization - Kotlin Parcelable
+- Retrofit - HTTP Client
+- Kotlin Serialization - Kotlin Multiplatform Serialization - Kotlin Parcelable
 - Room - Local Database
 - Hilt - Dependency Injection
 - Glide - Image Loading
 
 # Architecture and Design Patterns
-+ [MVVM] Model-View-ViewModel design pattern
+- [MVVM] Model-View-ViewModel design pattern
