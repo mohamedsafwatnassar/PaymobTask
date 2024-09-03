@@ -1,0 +1,102 @@
+package com.paymob.moviesapp.utils.extentions
+
+import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
+import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import com.bumptech.glide.Glide
+import com.paymob.moviesapp.R
+
+inline fun View.onDebouncedListener(
+    delayInClick: Long = 500L,
+    crossinline listener: (View) -> Unit,
+) {
+    val enableAgain = Runnable { isEnabled = true }
+    setOnClickListener {
+        if (isEnabled) {
+            isEnabled = false
+            postDelayed(enableAgain, delayInClick)
+            listener(it)
+        }
+    }
+}
+
+fun NavController.customNavigate(
+    @IdRes sourceId: Int,
+    @IdRes destinationId: Int,
+    isInclusive: Boolean = false,
+    @IdRes popUpTo: Int = -1,
+    data: Bundle? = null,
+) {
+    val navOption = NavOptions.Builder().apply {
+        setEnterAnim(R.anim.slide_from_out_right_to_center)
+        setExitAnim(R.anim.slide_from_center_to_out_left)
+        setPopEnterAnim(R.anim.slide_from_out_left_to_center)
+        setPopExitAnim(R.anim.slide_from_center_to_out_right)
+        if (isInclusive) {
+            setPopUpTo(destinationId, true)
+        }
+    }.build()
+    navigate(destinationId, data, navOption)
+}
+
+fun NavController.customNavigate(
+    @IdRes destinationId: Int,
+    isInclusive: Boolean = false,
+    @IdRes popUpTo: Int = -1,
+    data: Bundle? = null,
+) {
+    val navOption = NavOptions.Builder().apply {
+        setEnterAnim(R.anim.slide_from_out_right_to_center)
+        setExitAnim(R.anim.slide_from_center_to_out_left)
+        setPopEnterAnim(R.anim.slide_from_out_left_to_center)
+        setPopExitAnim(R.anim.slide_from_center_to_out_right)
+        setPopUpTo(popUpTo, isInclusive)
+    }.build()
+
+    navigate(destinationId, data, navOption)
+}
+
+fun NavController.customNavigate(
+    @IdRes destinationId: Int,
+    isInclusive: Boolean = false,
+    data: Bundle? = null,
+) {
+    val navOption = NavOptions.Builder().apply {
+        setEnterAnim(R.anim.slide_from_out_right_to_center)
+        setExitAnim(R.anim.slide_from_center_to_out_left)
+        setPopEnterAnim(R.anim.slide_from_out_left_to_center)
+        setPopExitAnim(R.anim.slide_from_center_to_out_right)
+    }.build()
+
+    navigate(destinationId, data, navOption)
+}
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
+}
+
+fun <T> MutableList<T>.addAllNonNullable(items: ArrayList<T?>?) {
+    items?.forEach { item ->
+        if (item != null) {
+            add(item)
+        }
+    }
+}
+
+fun ImageView.loadImage(
+    url: String?, @DrawableRes placeHolder: Int = R.drawable.ic_launcher_foreground
+) {
+    Glide.with(this.context).load(url).placeholder(placeHolder).error(placeHolder).into(this)
+}

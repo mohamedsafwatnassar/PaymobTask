@@ -1,33 +1,12 @@
 package com.paymob.moviesapp.localDatabase
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import com.paymob.moviesapp.model.FavoriteModel
+import com.paymob.moviesapp.model.MovieItem
 
-@TypeConverters
-@Database(entities = [], version = 1)
+@Database(entities = [FavoriteModel::class], version = 7, exportSchema = false)
 abstract class LocalDataBase : RoomDatabase() {
 
-    abstract fun moviesListDao(): MoviesListDao
-
-    companion object {
-        private var instance: LocalDataBase? = null
-
-        @Synchronized
-        fun getInstance(ctx: Context): LocalDataBase {
-            if (instance == null) {
-                instance = Room.databaseBuilder(
-                    ctx.applicationContext,
-                    LocalDataBase::class.java,
-                    "news_database"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
-            }
-
-            return instance!!
-        }
-    }
+    abstract fun moviesListDao(): FavoriteDao
 }

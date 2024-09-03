@@ -25,6 +25,26 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        release {
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "BASE_POSTER_URL", "\"https://image.tmdb.org/t/p/w500/\"")
+            buildConfigField("String", "api_key", "\"728fb6fa3074b2774a43ec50a0a7025a\"") // 602b2180-d476-4c1f-8ca2-fa42230aaaef
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "BASE_POSTER_URL", "\"https://image.tmdb.org/t/p/w500/\"")
+            buildConfigField("String", "api_key", "\"728fb6fa3074b2774a43ec50a0a7025a\"")
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -35,12 +55,13 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -49,6 +70,7 @@ dependencies {
 
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:2.48"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     kapt "com.google.dagger:hilt-compiler:2.48"
 
     // Retrofit
@@ -59,11 +81,17 @@ dependencies {
 
     // Room local database
     implementation "androidx.room:room-runtime:2.6.1"
-    annotationProcessor "androidx.room:room-compiler:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
 
     // View Model
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.4'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'

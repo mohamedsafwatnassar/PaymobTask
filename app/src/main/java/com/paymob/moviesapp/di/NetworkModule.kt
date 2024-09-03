@@ -2,6 +2,7 @@ package com.paymob.moviesapp.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.paymob.moviesapp.BuildConfig
 import com.paymob.moviesapp.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -42,7 +43,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .baseUrl("BuildConfig.BASR_URL")
+            .baseUrl(BuildConfig.BASE_URL)
             .build()
     }
 

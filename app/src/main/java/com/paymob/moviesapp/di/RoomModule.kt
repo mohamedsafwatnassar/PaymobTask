@@ -1,8 +1,9 @@
 package com.paymob.moviesapp.di
 
 import android.content.Context
+import androidx.room.Room
+import com.paymob.moviesapp.localDatabase.FavoriteDao
 import com.paymob.moviesapp.localDatabase.LocalDataBase
-import com.paymob.moviesapp.localDatabase.MoviesListDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,9 +15,19 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RoomModule {
 
-    @Singleton
     @Provides
-    fun provideNewsDao(@ApplicationContext context: Context): MoviesListDao {
-        return LocalDataBase.getInstance(context).moviesListDao()
+    @Singleton
+    fun provideDatabase(@ApplicationContext appContext: Context): LocalDataBase {
+        return Room.databaseBuilder(
+            appContext, LocalDataBase::class.java, "movie_database"
+        )
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
+    }
+
+    @Provides
+    fun provideMovieDao(db: LocalDataBase): FavoriteDao {
+        return db.moviesListDao()
     }
 }
