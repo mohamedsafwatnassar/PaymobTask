@@ -1,4 +1,4 @@
-package com.paymob.moviesapp.bestMovies
+package com.paymob.moviesapp.ui.movies.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.paymob.moviesapp.R
 import com.paymob.moviesapp.base.BaseFragment
-import com.paymob.moviesapp.bestMovies.adapter.MoviesAdapter
-import com.paymob.moviesapp.bestMovies.viewmodel.MoviesViewModel
+import com.paymob.moviesapp.ui.movies.adapter.MoviesAdapter
+import com.paymob.moviesapp.ui.movies.viewmodel.MoviesViewModel
 import com.paymob.moviesapp.databinding.FragmentMoviesBinding
 import com.paymob.moviesapp.network.ApiHandler
 import com.paymob.moviesapp.utils.NetworkConnectivity
@@ -35,8 +35,6 @@ class MoviesFragment : BaseFragment(), NetworkConnectivity {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

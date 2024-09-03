@@ -1,4 +1,4 @@
-package com.paymob.moviesapp.bestMovies.adapter
+package com.paymob.moviesapp.ui.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

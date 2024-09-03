@@ -1,4 +1,4 @@
-package com.paymob.moviesapp.bestMovies.repo
+package com.paymob.moviesapp.ui.movies.repo
 
 import com.paymob.moviesapp.base.BaseRepository
 import com.paymob.moviesapp.localDatabase.FavoriteDao

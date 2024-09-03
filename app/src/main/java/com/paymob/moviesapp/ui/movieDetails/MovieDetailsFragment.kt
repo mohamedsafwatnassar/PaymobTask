@@ -1,4 +1,4 @@
-package com.paymob.moviesapp.ui
+package com.paymob.moviesapp.ui.movieDetails
 
 import android.os.Build
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import com.paymob.moviesapp.BuildConfig
 import com.paymob.moviesapp.R
 import com.paymob.moviesapp.base.BaseFragment
-import com.paymob.moviesapp.bestMovies.viewmodel.MoviesViewModel
+import com.paymob.moviesapp.ui.movies.viewmodel.MoviesViewModel
 import com.paymob.moviesapp.databinding.FragmentMovieDetailsBinding
 import com.paymob.moviesapp.model.MovieItem
 import com.paymob.moviesapp.utils.extentions.getParcelableCompat
