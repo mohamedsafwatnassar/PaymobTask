@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.paymob.moviesapp.R
 import com.paymob.moviesapp.base.BaseFragment
 import com.paymob.moviesapp.bestMovies.adapter.MoviesAdapter
 import com.paymob.moviesapp.bestMovies.viewmodel.MoviesViewModel
 import com.paymob.moviesapp.databinding.FragmentMoviesBinding
 import com.paymob.moviesapp.network.ApiHandler
 import com.paymob.moviesapp.utils.NetworkConnectivity
+import com.paymob.moviesapp.utils.extentions.customNavigate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,47 +36,33 @@ class MoviesFragment : BaseFragment(), NetworkConnectivity {
         return binding.root
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setBtnListeners()
+
+        // call api to fetch movies list()
+        vm.getMoviesList()
+
         initRecyclerView()
         subscribeData()
-    }
-
-    private fun setBtnListeners() {
-        binding.swipeRefresh.apply {
-            // vm.getBestMoviesList()
-            binding.swipeRefresh.isRefreshing = false
-        }
-
-        /*binding.searchView.setOnQueryTextListener(object :
-            SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                moviesAdapter.filter.filter(newText)
-                return false
-            }
-        })*/
     }
 
     private fun initRecyclerView() {
         binding.rvBestMovies.apply {
             moviesAdapter = MoviesAdapter(
                 onMovieCallback = { movie ->
-
+                    val bundle = Bundle()
+                    bundle.putParcelable("Movie_Item", movie)
+                    findNavController().customNavigate(R.id.movieDetailsFragment, data = bundle)
                 },
                 onFavouriteCallback = { movieId, isFavorite, position ->
                     selectedPosition = position
                     if (isFavorite) {
-                        vm.removeMovieToFavorite(movieId!!, selectedPosition)
+                        vm.removeMovieToFavorite(movieId!!)
                     } else {
-                        vm.addMovieToFavorite(movieId!!, selectedPosition)
+                        vm.addMovieToFavorite(movieId!!)
                     }
-
-                    // moviesAdapter.notifyItemChanged(position)
                 },
             )
             adapter = moviesAdapter
@@ -115,7 +104,7 @@ class MoviesFragment : BaseFragment(), NetworkConnectivity {
     }
 
     override fun retryNetworkConnectionCallBack() {
-        vm.getBestMoviesList()
+        vm.getMoviesList()
     }
 
     override fun onDestroyView() {

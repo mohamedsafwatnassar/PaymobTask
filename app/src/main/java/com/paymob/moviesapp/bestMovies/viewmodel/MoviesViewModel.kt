@@ -24,13 +24,9 @@ class MoviesViewModel @Inject constructor(
     val favoriteStatus: LiveData<ApiHandler<Int>>
         get() = _favoriteStatus
 
-    init {
-        getBestMoviesList()
-    }
-
-    fun getBestMoviesList() {
+    fun getMoviesList() {
         viewModelScope.launch {
-            repo.getBestMoviesList().collect {
+            repo.getMoviesList().collect {
                 when (it) {
                     is ApiHandler.Success -> {
                         val data = it.data
@@ -92,7 +88,7 @@ class MoviesViewModel @Inject constructor(
     }
 
     // Add favorite status
-    fun addMovieToFavorite(movieId: Int, position: Int) {
+    fun addMovieToFavorite(movieId: Int) {
         viewModelScope.launch {
             repo.addFavoriteMovieId(movieId).collect {
                 when (it) {
@@ -121,7 +117,7 @@ class MoviesViewModel @Inject constructor(
         }
     }
 
-    fun removeMovieToFavorite(movieId: Int, position: Int) {
+    fun removeMovieToFavorite(movieId: Int) {
         viewModelScope.launch {
             repo.removeFavoriteMovieById(movieId).collect {
                 when (it) {

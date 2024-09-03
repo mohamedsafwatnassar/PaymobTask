@@ -2,8 +2,6 @@ package com.paymob.moviesapp.bestMovies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.paymob.moviesapp.BuildConfig
@@ -11,12 +9,11 @@ import com.paymob.moviesapp.R
 import com.paymob.moviesapp.databinding.ItemMovieBinding
 import com.paymob.moviesapp.model.MovieItem
 import com.paymob.moviesapp.utils.extentions.onDebouncedListener
-import java.util.Locale
 
 class MoviesAdapter(
     private val onMovieCallback: (movie: MovieItem) -> Unit,
     private val onFavouriteCallback: (movieId: Int?, isFavorite: Boolean, position: Int) -> Unit,
-) : RecyclerView.Adapter<MoviesAdapter.MoviesVieHolder>(), Filterable {
+) : RecyclerView.Adapter<MoviesAdapter.MoviesVieHolder>() {
 
     private var moviesList: List<MovieItem> = ArrayList()
     private var filterMoviesList: List<MovieItem> = ArrayList()
@@ -73,26 +70,5 @@ class MoviesAdapter(
     fun updateFavoriteStatusFromMovie(position: Int) {
         moviesList[position].isFavorite = !moviesList[position].isFavorite
         notifyItemChanged(position)
-    }
-
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charString =
-                    constraint?.toString()?.lowercase(Locale.getDefault()).toString().trim()
-                filterMoviesList = if (charString.isEmpty()) moviesList else {
-                    moviesList.filter { it.title!!.lowercase().contains(charString) }
-                }
-                return FilterResults().apply { values = filterMoviesList }
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                filterMoviesList = if (results?.values == null)
-                    ArrayList()
-                else
-                    results.values as ArrayList<MovieItem>
-                notifyDataSetChanged()
-            }
-        }
     }
 }

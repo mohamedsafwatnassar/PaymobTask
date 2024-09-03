@@ -9,6 +9,12 @@
     <fragment
         android:id="@+id/bestMoviesFragment"
         android:name="com.paymob.moviesapp.bestMovies.MoviesFragment"
-        android:label="Best Movies"
+        android:label="Movies"
         tools:layout="@layout/fragment_movies" />
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.paymob.moviesapp.ui.MovieDetailsFragment"
+        android:label="Movie Details"
+        tools:layout="@layout/fragment_movie_details" />
 </navigation>

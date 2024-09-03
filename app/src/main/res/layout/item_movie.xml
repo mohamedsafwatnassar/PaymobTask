@@ -25,38 +25,37 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgMovie"
-            app:shapeAppearanceOverlay="@style/roundedCornersImageView"
             android:layout_width="110dp"
             android:layout_height="100dp"
             android:layout_marginTop="@dimen/space_2x"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/btnFavorite"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/space_1_5x"
-            android:layout_marginEnd="@dimen/space_1x"
-            android:padding="@dimen/space_1x"
-            android:src="@drawable/ic_favorite" />
+            app:shapeAppearanceOverlay="@style/roundedCornersImageView"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/space_2x"
-            android:textColor="#fff"
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/imgRate"
             app:layout_constraintEnd_toStartOf="@id/btnFavorite"
             app:layout_constraintStart_toEndOf="@id/imgMovie"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="hello" />
+            tools:text="Text text text text text text text text text text" />
+
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="@dimen/space_1x"
+            android:padding="@dimen/space_1x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtTitle"
+            tools:src="@drawable/ic_favorite" />
 
         <TextView
             android:id="@+id/txtReleaseDate"
@@ -65,7 +64,7 @@
             android:layout_marginEnd="@dimen/space_4x"
             android:layout_marginBottom="@dimen/space_2x"
             android:textColor="#B3FFFFFF"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/txtTitle"
             tools:text="2024-08-16" />
@@ -74,7 +73,7 @@
             android:id="@+id/imgRate"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="@dimen/space_1_5x"
             android:layout_marginBottom="@dimen/space_2x"
             android:scaleType="fitXY"
             android:src="@drawable/ic_star_rate"
@@ -86,11 +85,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_2x"
-            android:layout_marginBottom="@dimen/space_2x"
-            android:textColor="#B3FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgRate"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgRate"
             tools:text="9.9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

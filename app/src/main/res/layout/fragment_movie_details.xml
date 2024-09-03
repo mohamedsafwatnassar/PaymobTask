@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.MovieDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_2_5x"
+            android:gravity="start"
+            android:padding="@dimen/space_1x"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/imgMovie"
+            app:layout_constraintEnd_toStartOf="@id/favorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Welcome welcome welcome welcome" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/favorite"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="@dimen/space_1_5x"
+            android:layout_marginEnd="@dimen/space_2x"
+            android:padding="@dimen/space_1x"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintTop_toTopOf="@id/title"
+            tools:src="@drawable/ic_favorite" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgMovie"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginStart="@dimen/space_2x"
+            android:layout_marginEnd="@dimen/space_2x"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@id/txtVoteAverage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:shapeAppearance="@style/roundedCornersImageView" />
+
+        <TextView
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_1x"
+            android:layout_marginTop="@dimen/space_2x"
+            android:gravity="start"
+            android:padding="@dimen/space_1x"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/imgMovie"
+            app:layout_constraintTop_toBottomOf="@id/imgMovie"
+            tools:text="Language: en" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgRate"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/space_4x"
+            android:layout_marginTop="@dimen/space_3x"
+            android:layout_marginEnd="@dimen/space_2x"
+            android:layout_marginBottom="@dimen/space_2x"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_star_rate"
+            app:layout_constraintBottom_toBottomOf="@id/language"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/language" />
+
+        <TextView
+            android:id="@+id/txtVoteAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_1x"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgRate"
+            app:layout_constraintStart_toEndOf="@id/imgRate"
+            app:layout_constraintTop_toTopOf="@id/imgRate"
+            tools:text="9.9" />
+
+        <TextView
+            android:id="@+id/txtCountAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:textColor="@color/colorText"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/language"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/language"
+            tools:text="9.9" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_3x"
+            android:layout_marginTop="@dimen/space_4.5x"
+            android:layout_marginEnd="@dimen/space_2_5x"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgRate"
+            tools:text="Very excited to share my latest shots. This time I made shots about the cinema booking app. Let me know what you think about this. I hope you like it. Feel free to feedback and please press if you like it ❤ Enjoy!" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

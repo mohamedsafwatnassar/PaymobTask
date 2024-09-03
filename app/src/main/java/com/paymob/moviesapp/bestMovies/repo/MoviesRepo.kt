@@ -17,9 +17,9 @@ class MoviesRepo @Inject constructor(
     private val favoriteDao: FavoriteDao
 ) : BaseRepository() {
 
-    suspend fun getBestMoviesList(): Flow<ApiHandler<MoviesResponse>> {
+    suspend fun getMoviesList(): Flow<ApiHandler<MoviesResponse>> {
         return performApiCall(apiCall = {
-            apiService.getBestMoviesList()
+            apiService.getMoviesList()
         })
     }
 

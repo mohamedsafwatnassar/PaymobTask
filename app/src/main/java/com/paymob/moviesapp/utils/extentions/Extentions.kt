@@ -1,6 +1,8 @@
 package com.paymob.moviesapp.utils.extentions
 
+import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
@@ -87,16 +89,17 @@ fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
 
-fun <T> MutableList<T>.addAllNonNullable(items: ArrayList<T?>?) {
-    items?.forEach { item ->
-        if (item != null) {
-            add(item)
-        }
-    }
-}
-
 fun ImageView.loadImage(
     url: String?, @DrawableRes placeHolder: Int = R.drawable.ic_launcher_foreground
 ) {
     Glide.with(this.context).load(url).placeholder(placeHolder).error(placeHolder).into(this)
+}
+
+fun <T : Parcelable> Bundle.getParcelableCompat(key: String, clazz: Class<T>): T? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        getParcelable(key, clazz)
+    } else {
+        @Suppress("DEPRECATION")
+        getParcelable(key) as? T
+    }
 }
