@@ -11,3 +11,7 @@ Created an application that displays a list of the best movies in 2024. Each mov
 
 # Architecture and Design Patterns
 - [MVVM] Model-View-ViewModel design pattern
+
+# Features App
+- The first feature retrieves the latest movies from APIs and presents them with a visually appealing layout, displaying each movie's poster, title, and release date. Users can easily add or remove movies from their favorites by simply tapping on the favorite icon.
+![5e37c5fc-ae89-4361-addc-951a50006925](https://github.com/user-attachments/assets/36702b88-b589-4692-bc73-75d663483345)
